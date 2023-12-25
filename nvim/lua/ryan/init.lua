@@ -1,3 +1,11 @@
 require("ryan.remap")
-print("hello inner")
+require("ryan.set")
 vim.wo.number = true
+
+
+
+
+
+
+
+
