@@ -1,68 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-cpu_top=(
-  label.font="$FONT:Semibold:7"
-  label=CPU
-  icon.drawing=off
-  width=0
-  padding_right=5
-  y_offset=6
-)
+COLOR="$YELLOW"
 
-cpu_percent=(
-  label.font="$FONT:Heavy:12"
-  label=CPU
-  y_offset=0 # was -4
-  padding_right=5
-  width=55
-  icon.drawing=off
-  update_freq=4
-  mach_helper="$HELPER"
-)
-
-cpu_sys=(
-  width=0
-  graph.color=$GREEN
-  graph.fill_color=$GREEN
-  label.drawing=off
-  icon.drawing=off
-  background.height=20
-  background.drawing=on
-  background.color=$TRANSPARENT
-)
-
-cpu_user=(
-  graph.color=$LIGHT_BLUE
-  label.drawing=off
-  icon.drawing=off
-  background.height=20
-  background.drawing=on
-  background.color=$TRANSPARENT
-)
-
-status_bracket=(
-  shadow=on
-  background.height=30
-  background.color=$BACKGROUND_2
-  background.border_color=$BACKGROUND_2
-  blur_radius=30
-)
-
-sketchybar  --add item cpu.percent right          \
-            --set cpu.percent "${cpu_percent[@]}" \
-           # --add item cpu.top right              \
-           # --set cpu.top "${cpu_top[@]}"         \
-                                                 \
-                                                 \
-           # --add graph cpu.sys right 75          \
-           # --set cpu.sys "${cpu_sys[@]}"         \
-           #                                       \
-           # --add graph cpu.user right 75         \
-           # --set cpu.user "${cpu_user[@]}"
-
-# bracket for everything
-sketchybar --add bracket status                        \
-                cpu.top cpu.percent cpu.sys cpu.user    \
-                brew github.bell wifi input volume_icon \
-                calendar time \
-           --set status "${status_bracket[@]}"
+sketchybar --add item cpu right \
+	--set cpu \
+	update_freq=3 \
+	icon.color="$COLOR" \
+	icon.padding_left=10 \
+	label.color="$COLOR" \
+	label.padding_right=10 \
+	background.height=26 \
+	background.corner_radius="$CORNER_RADIUS" \
+	background.padding_right=5 \
+	background.border_width="$BORDER_WIDTH" \
+	background.border_color="$COLOR" \
+	background.color="$BAR_COLOR" \
+	background.drawing=on \
+	script="$PLUGIN_DIR/cpu.sh"
