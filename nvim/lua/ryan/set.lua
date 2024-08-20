@@ -1,6 +1,3 @@
-
-
-vim.opt.nu = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -24,7 +21,8 @@ vim.opt.signcolumn = "yes"
 
 vim.g.mapleader = " "
 
-
-
-
+vim.opt.numberwidth = 3
+vim.opt.nu = false
+vim.opt.relativenumber = true 
+vim.o.statuscolumn = ""
 
