@@ -22,22 +22,26 @@ return require('packer').startup(function(use)
   }
 
   use {'nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'}}
-  use {
-      'VonHeikemen/lsp-zero.nvim',
-      branch = 'v3.x',
-      requires = {
-          --- Uncomment these if you want to manage LSP servers from neovim
-          {'williamboman/mason.nvim'},
-          {'williamboman/mason-lspconfig.nvim'},
-
-          -- LSP Support
-          {'neovim/nvim-lspconfig'},
-          -- Autocompletion
-          {'hrsh7th/nvim-cmp'},
-          {'hrsh7th/cmp-nvim-lsp'},
-          {'L3MON4D3/LuaSnip'},
-      }
-  }
+  -- use {
+  --     'VonHeikemen/lsp-zero.nvim',
+  --     branch = 'v3.x',
+  --     requires = {
+  --         --- Uncomment these if you want to manage LSP servers from neovim
+  --         {'williamboman/mason.nvim'},
+  --         {'williamboman/mason-lspconfig.nvim'},
+  --
+  --         -- LSP Support
+  --         {'neovim/nvim-lspconfig'},
+  --         -- Autocompletion
+  --         {'hrsh7th/nvim-cmp'},
+  --         {'hrsh7th/cmp-nvim-lsp'},
+  --         {'L3MON4D3/LuaSnip'},
+  --     }
+  -- }
+  use {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'}
+  use {'neovim/nvim-lspconfig'}
+  use {'hrsh7th/cmp-nvim-lsp'}
+  use {'hrsh7th/nvim-cmp'}
   use {
       'nvim-tree/nvim-tree.lua',
       requires = {
@@ -56,5 +60,14 @@ return require('packer').startup(function(use)
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
   end}
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
 
 end)
